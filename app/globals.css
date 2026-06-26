@@ -3,6 +3,13 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* Semantic colors for visualizer states */
+  --color-default: #378ADD;      /* blue - neutral element */
+  --color-active: #BA7517;       /* amber - currently being compared/examined */
+  --color-success: #639922;      /* green - confirmed/sorted/found */
+  --color-error: #E24B4A;        /* coral/red - invalid operation */
+  --color-structural: #5F5E5A;   /* gray - borders, inert UI */
 }
 
 @theme inline {
@@ -10,6 +17,13 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Register our semantic colors as Tailwind utility classes */
+  --color-viz-default: var(--color-default);
+  --color-viz-active: var(--color-active);
+  --color-viz-success: var(--color-success);
+  --color-viz-error: var(--color-error);
+  --color-viz-structural: var(--color-structural);
 }
 
 @media (prefers-color-scheme: dark) {
