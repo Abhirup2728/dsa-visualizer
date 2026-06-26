@@ -18,3 +18,20 @@ export const bubbleSortContent: LearningContent = {
     space: "O(1)",
   },
 };
+export const selectionSortContent: LearningContent = {
+  concept:
+    "Selection Sort divides the array into a sorted and an unsorted region. On each pass, it scans the entire unsorted region to find the smallest remaining element, then swaps it into the next position in the sorted region.",
+  working: [
+    "Assume the first element is the minimum of the unsorted region.",
+    "Scan the rest of the unsorted region, comparing each element to the current minimum.",
+    "Whenever a smaller element is found, update which index holds the minimum.",
+    "After scanning the full unsorted region, swap the minimum into its correct sorted position.",
+    "Move the boundary between sorted and unsorted regions forward by one, and repeat.",
+  ],
+  complexity: {
+    best: "O(n²)",
+    average: "O(n²)",
+    worst: "O(n²)",
+    space: "O(1)",
+  },
+};
