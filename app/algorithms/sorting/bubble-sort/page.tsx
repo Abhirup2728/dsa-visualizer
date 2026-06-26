@@ -3,6 +3,8 @@
 import { useState, useMemo, useEffect, useRef } from "react";
 import ArrayBar from "@/components/visualizer/ArrayBar";
 import { bubbleSortWithSteps } from "@/lib/algorithms/bubbleSort";
+import LearningPanel from "@/components/learning/LearningPanel";
+import { bubbleSortContent } from "@/content/topics";
 
 const INITIAL_ARRAY = [5, 2, 8, 1, 9, 3, 7, 4, 6];
 
@@ -116,6 +118,8 @@ export default function BubbleSortPage() {
             : "Done"}
         </span>
       </div>
+
+      <LearningPanel content={bubbleSortContent} />
     </div>
   );
 }
