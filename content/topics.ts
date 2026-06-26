@@ -70,3 +70,21 @@ export const mergeSortContent: LearningContent = {
     space: "O(n)",
   },
 };
+export const quickSortContent: LearningContent = {
+  concept:
+    "Quick Sort is a highly efficient divide-and-conquer sorting algorithm that works by selecting a pivot element from the array and partitioning the remaining elements into two groups: those smaller than the pivot and those greater than the pivot. After partitioning, the pivot is placed in its correct sorted position, and the same process is recursively applied to the left and right subarrays until the entire array is sorted. Quick Sort is generally an in-place sorting algorithm, requiring only O(log n) auxiliary space for the recursion stack on average, but it is not stable, as equal elements may not retain their original relative order. Its average and best-case time complexity is O(n log n), while its worst-case time complexity is O(n²), which occurs when poor pivot selection leads to highly unbalanced partitions. Despite this worst-case possibility, Quick Sort is one of the fastest sorting algorithms in practice due to its low overhead, excellent cache performance, and efficient partitioning strategy, making it widely used for sorting large arrays.",
+  working: [
+    "Choose the last element of the current range as the pivot.",
+    "Walk through the range, moving elements smaller than the pivot to the left side.",
+    "After scanning the full range, swap the pivot into its correct final position.",
+    "Recursively apply the same partitioning process to the elements left of the pivot.",
+    "Recursively apply the same partitioning process to the elements right of the pivot.",
+    "The array becomes fully sorted once every partition has been processed down to single elements.",
+  ],
+  complexity: {
+    best: "O(n log n)",
+    average: "O(n log n)",
+    worst: "O(n²)",
+    space: "O(log n)",
+  },
+};
