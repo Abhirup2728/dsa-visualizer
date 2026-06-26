@@ -10,6 +10,8 @@ export function insertionSortWithSteps(input: number[]): SortStep[] {
     comparing: null,
     swapped: false,
     sortedIndices: [0],
+    highlightRange: null,
+    pivotIndex: null,
   });
 
   for (let i = 1; i < n; i++) {
@@ -22,6 +24,8 @@ export function insertionSortWithSteps(input: number[]): SortStep[] {
         comparing: [j, j + 1],
         swapped: false,
         sortedIndices: Array.from({ length: i }, (_, k) => k),
+        highlightRange: null,
+        pivotIndex: null,
       });
 
       if (array[j] > current) {
@@ -33,6 +37,8 @@ export function insertionSortWithSteps(input: number[]): SortStep[] {
           comparing: [j + 1, j + 2],
           swapped: true,
           sortedIndices: Array.from({ length: i }, (_, k) => k),
+          highlightRange: null,
+          pivotIndex: null,
         });
       } else {
         break;
@@ -48,6 +54,8 @@ export function insertionSortWithSteps(input: number[]): SortStep[] {
     comparing: null,
     swapped: false,
     sortedIndices: allSorted,
+    highlightRange: null,
+    pivotIndex: null,
   });
 
   return steps;

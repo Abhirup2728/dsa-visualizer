@@ -15,6 +15,8 @@ export function selectionSortWithSteps(input: number[]): SortStep[] {
         comparing: [minIndex, j],
         swapped: false,
         sortedIndices: [...sortedIndices],
+        highlightRange: null,
+        pivotIndex: null,
       });
 
       if (array[j] < array[minIndex]) {
@@ -29,6 +31,8 @@ export function selectionSortWithSteps(input: number[]): SortStep[] {
         comparing: [i, minIndex],
         swapped: true,
         sortedIndices: [...sortedIndices],
+        highlightRange: null,
+        pivotIndex: null,
       });
     }
 
@@ -41,6 +45,8 @@ export function selectionSortWithSteps(input: number[]): SortStep[] {
     comparing: null,
     swapped: false,
     sortedIndices: [...sortedIndices],
+    highlightRange: null,
+    pivotIndex: null,
   });
 
   return steps;

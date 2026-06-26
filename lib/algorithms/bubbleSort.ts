@@ -15,6 +15,8 @@ export function bubbleSortWithSteps(input: number[]): SortStep[] {
         comparing: [j, j + 1],
         swapped: false,
         sortedIndices: [...sortedIndices],
+        highlightRange: null,
+        pivotIndex: null,
       });
 
       if (array[j] > array[j + 1]) {
@@ -26,6 +28,8 @@ export function bubbleSortWithSteps(input: number[]): SortStep[] {
           comparing: [j, j + 1],
           swapped: true,
           sortedIndices: [...sortedIndices],
+          highlightRange: null,
+        pivotIndex: null,
         });
       }
     }
@@ -42,6 +46,8 @@ export function bubbleSortWithSteps(input: number[]): SortStep[] {
     comparing: null,
     swapped: false,
     sortedIndices: [...sortedIndices],
+    highlightRange: null,
+    pivotIndex: null,
   });
 
   return steps;

@@ -53,3 +53,20 @@ export const insertionSortContent: LearningContent = {
     space: "O(1)",
   },
 };
+export const mergeSortContent: LearningContent = {
+  concept:
+    "Merge Sort is an efficient divide-and-conquer sorting algorithm that recursively divides an array into two equal halves until each subarray contains only one element. Since a single-element array is already sorted, the algorithm then repeatedly merges the subarrays by comparing their elements and arranging them in the correct order, producing larger sorted subarrays until the entire array is sorted. Merge Sort guarantees a time complexity of O(n log n) in the best, average, and worst cases, making it much more efficient than simple sorting algorithms such as Bubble Sort and Insertion Sort for large datasets. It is also a stable sorting algorithm, meaning that equal elements preserve their original relative order. However, Merge Sort is not an in-place algorithm, as it requires O(n) additional memory to store temporary arrays during the merging process. Due to its predictable performance and efficiency, Merge Sort is widely used for sorting large datasets, linked lists, and in applications where stability is important.",
+  working: [
+    "Divide the array into two halves, splitting at the midpoint.",
+    "Recursively apply the same splitting process to each half until every piece has one element.",
+    "Merge two sorted halves together by repeatedly comparing their front elements and placing the smaller one next.",
+    "Continue merging pairs of sorted pieces back together, doubling in size each time.",
+    "The process completes when the entire array has been merged back into one fully sorted sequence.",
+  ],
+  complexity: {
+    best: "O(n log n)",
+    average: "O(n log n)",
+    worst: "O(n log n)",
+    space: "O(n)",
+  },
+};
