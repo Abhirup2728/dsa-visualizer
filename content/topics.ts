@@ -175,3 +175,20 @@ export const stackContent: LearningContent = {
     space: "O(n)",
   },
 };
+export const arrayContent: LearningContent = {
+  concept:
+    "Array is a fundamental linear data structure used to store a collection of elements of the same data type in a contiguous block of memory. Each element in an array is assigned a unique index, typically starting from 0, which allows direct and efficient access to any element using its index. Because the memory locations are contiguous, arrays provide constant-time access (O(1)) to elements, making them highly efficient for retrieving and updating data. Arrays can be either one-dimensional or multidimensional (such as two-dimensional arrays used to represent matrices). However, their size is usually fixed at the time of creation, meaning they cannot be easily resized without creating a new array. Insertion and deletion operations in the middle of an array require shifting elements, resulting in a time complexity of O(n), whereas accessing or modifying an element by index takes O(1) time. Arrays are widely used as the foundation for many other data structures, including stacks, queues, heaps, hash tables, and matrices, and they play a crucial role in implementing algorithms that require fast random access to data. Their simplicity, memory efficiency, and predictable performance make arrays one of the most commonly used data structures in computer science and software development.",
+  working: [
+    "Insert adds a new element at a specified index, shifting later elements to the right.",
+    "Delete removes the element at a specified index, shifting later elements to the left.",
+    "Search scans the array to find the index of a target value.",
+    "Traverse visits every element of the array in order, from the first index to the last.",
+    "Accessing an element by its index is a constant-time operation, since its memory location can be calculated directly.",
+  ],
+  complexity: {
+    best: "O(1)",
+    average: "O(n)",
+    worst: "O(n)",
+    space: "O(n)",
+  },
+};
