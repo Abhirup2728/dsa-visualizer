@@ -257,3 +257,19 @@ export const bstContent: LearningContent = {
     space: "O(n)",
   },
 };
+export const heapContent: LearningContent = {
+  concept:
+    "Heap is a specialized tree-based data structure that satisfies the heap property, where each parent node is either greater than or equal to its children (Max Heap) or less than or equal to its children (Min Heap). A heap is typically implemented as a complete binary tree, meaning that all levels are completely filled except possibly the last level, which is filled from left to right. Unlike a Binary Search Tree, a heap does not maintain a sorted order among sibling nodes; it only guarantees the heap property between a parent and its children. The root node always contains the largest element in a Max Heap or the smallest element in a Min Heap, allowing efficient access to the highest- or lowest-priority element. Common operations include insertion, deletion of the root, and heapify, each having a time complexity of O(log n), while accessing the root element takes O(1) time. The space complexity of a heap is O(n). Heaps are widely used to implement Priority Queues, Heap Sort, graph algorithms such as Dijkstra's Algorithm and Prim's Algorithm, scheduling systems, and memory management. Due to their efficient handling of priority-based operations, heaps are one of the most important data structures in computer science and software development.",
+  working: [
+    "Insert adds the new value at the end of the array, then repeatedly swaps it with its parent until the heap property is restored (bubble up).",
+    "Extract Min removes the root, moves the last element to the root position, then repeatedly swaps it with the smaller child until the heap property is restored (bubble down).",
+    "A node at array index i has its left child at index 2i+1 and right child at index 2i+2.",
+    "The dual array/tree view shows that a heap is really just an array, with the tree structure implied by index relationships.",
+  ],
+  complexity: {
+    best: "O(1)",
+    average: "O(log n)",
+    worst: "O(log n)",
+    space: "O(n)",
+  },
+};
