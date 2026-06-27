@@ -241,3 +241,19 @@ export const treeContent: LearningContent = {
     space: "O(h)",
   },
 };
+export const bstContent: LearningContent = {
+  concept:
+    "Binary Search Tree (BST) is a specialized type of binary tree in which each node contains at most two children, known as the left child and the right child, and follows a specific ordering property: all values in the left subtree of a node are smaller than the node's value, while all values in the right subtree are greater than the node's value. This property is maintained recursively for every node in the tree, enabling efficient searching, insertion, and deletion operations. A BST allows data to be stored in a sorted manner, and an Inorder Traversal of a BST visits the elements in ascending order. The efficiency of a BST depends on its height; in a balanced BST, search, insertion, and deletion operations take O(log n) time, whereas in the worst case, when the tree becomes skewed, these operations degrade to O(n) time. The space complexity of a BST is O(n), where n is the number of nodes. Binary Search Trees are widely used in database indexing, dictionaries, symbol tables, dynamic sets, searching applications, and other systems that require efficient storage, retrieval, and maintenance of sorted data.",
+  working: [
+    "Insert compares the new value to each node, going left if smaller or right if larger, until an empty spot is found.",
+    "Search follows the same left/right comparison path until the value is found or a null position is reached.",
+    "Delete locates the node, then replaces it with its in-order successor if it has two children.",
+    "Because of the ordering property, each operation only needs to explore one path from the root, not the entire tree.",
+  ],
+  complexity: {
+    best: "O(log n)",
+    average: "O(log n)",
+    worst: "O(n)",
+    space: "O(n)",
+  },
+};
