@@ -158,3 +158,20 @@ export const dfsContent: LearningContent = {
     space: "O(V)",
   },
 };
+export const stackContent: LearningContent = {
+  concept:
+    "Stack is a linear data structure that follows the Last In, First Out (LIFO) principle, meaning the last element inserted into the stack is the first one to be removed. Elements are added to the stack using the push operation and removed using the pop operation, while the peek (or top) operation allows access to the top element without removing it. Since all insertions and deletions occur at one end, called the top of the stack, these operations are performed efficiently. Stacks are widely used in function call management, recursion, expression evaluation, syntax parsing, backtracking algorithms, undo/redo operations in text editors, browser history navigation, and Depth-First Search (DFS). The basic stack operations—push, pop, and peek—have a time complexity of O(1), while the space complexity is O(n), where n is the number of elements stored in the stack.",
+  working: [
+    "Push adds a new element to the top of the stack.",
+    "Pop removes and returns the element currently at the top of the stack.",
+    "Peek (optional) views the top element without removing it.",
+    "Attempting to pop from an empty stack is an invalid operation and produces an error.",
+    "Only the top element is ever directly accessible — elements below it must wait their turn.",
+  ],
+  complexity: {
+    best: "O(1)",
+    average: "O(1)",
+    worst: "O(1)",
+    space: "O(n)",
+  },
+};
