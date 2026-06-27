@@ -88,3 +88,20 @@ export const quickSortContent: LearningContent = {
     space: "O(log n)",
   },
 };
+export const linearSearchContent: LearningContent = {
+  concept:
+    "Linear Search is the simplest searching algorithm used to find a specific element in a collection of data. It works by examining each element sequentially from the beginning of the array or list and comparing it with the target value until the desired element is found or the end of the collection is reached. If the target element is found, the algorithm returns its position; otherwise, it reports that the element is not present. Linear Search does not require the data to be sorted, making it suitable for searching in both sorted and unsorted datasets. Its time complexity is O(1) in the best case (when the element is found at the first position) and O(n) in the average and worst cases (when the element is located at the end or is absent). It requires O(1) extra space, making it a simple and memory-efficient algorithm for small datasets or unsorted collections.",
+  working: [
+    "Start at the first element of the array.",
+    "Compare the current element to the target value.",
+    "If they match, the search is complete and the index is returned.",
+    "If they do not match, move to the next element and repeat.",
+    "If the end of the array is reached with no match, the target is not present.",
+  ],
+  complexity: {
+    best: "O(1)",
+    average: "O(n)",
+    worst: "O(n)",
+    space: "O(1)",
+  },
+};
