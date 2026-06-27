@@ -273,3 +273,20 @@ export const heapContent: LearningContent = {
     space: "O(n)",
   },
 };
+export const graphContent: LearningContent = {
+  concept:
+    "Graph is a non-linear data structure consisting of a collection of vertices (or nodes) connected by edges, which represent relationships between pairs of vertices. Unlike trees, graphs do not have a hierarchical structure and may contain cycles, multiple paths, or disconnected components. Depending on the direction of edges, graphs are classified as Directed Graphs (Digraphs), where edges have a specific direction, and Undirected Graphs, where edges allow movement in both directions. Graphs can also be weighted, where each edge has an associated cost or distance, or unweighted, where all edges are considered equal. They are commonly represented using an Adjacency Matrix or an Adjacency List, with the latter being more space-efficient for sparse graphs. Fundamental graph traversal algorithms include Breadth-First Search (BFS) and Depth-First Search (DFS), which are used to visit and explore vertices systematically. Graphs are widely used in computer science for modeling real-world networks such as social networks, computer networks, road maps, airline routes, recommendation systems, web page linking, and communication systems. The time complexity of graph traversal using BFS or DFS is O(V + E), where V is the number of vertices and E is the number of edges, while the space complexity is O(V). Due to their ability to efficiently represent complex relationships and interconnected data, graphs are among the most important and widely used data structures in algorithms, networking, databases, artificial intelligence, and many real-world applications.",
+  working: [
+    "Each node represents an entity, and each edge represents a connection between two nodes.",
+    "Adding a node introduces a new vertex with no initial connections.",
+    "Adding an edge creates a connection between two existing nodes.",
+    "Deleting a node also removes every edge connected to it, to keep the graph consistent.",
+    "Graphs can be traversed using algorithms like BFS or DFS to visit all reachable nodes.",
+  ],
+  complexity: {
+    best: "O(1)",
+    average: "O(V + E)",
+    worst: "O(V + E)",
+    space: "O(V + E)",
+  },
+};
