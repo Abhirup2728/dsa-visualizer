@@ -208,3 +208,36 @@ export const queueContent: LearningContent = {
     space: "O(n)",
   },
 };
+export const linkedListContent: LearningContent = {
+  concept:
+    "Linked List is a dynamic linear data structure consisting of a sequence of nodes, where each node contains two parts: a data field that stores the value and a link (or pointer) that stores the address of the next node in the sequence. Unlike arrays, linked lists do not store elements in contiguous memory locations, allowing them to grow or shrink dynamically without requiring a fixed size. Since elements are connected through pointers, insertion and deletion operations can be performed efficiently without shifting other elements, making them particularly useful when the size of the data changes frequently. However, accessing a specific element requires traversing the list from the beginning, resulting in slower access compared to arrays. There are several types of linked lists, including Singly Linked List, Doubly Linked List, and Circular Linked List, each designed for different applications. Linked lists are widely used in implementing stacks, queues, hash tables, adjacency lists for graphs, memory management, and dynamic memory allocation. The time complexity for insertion and deletion at known positions is O(1), while searching and accessing elements require O(n) time. The space complexity is O(n), with additional memory required to store pointers along with the data. Due to their flexibility and efficient insertion and deletion operations, linked lists are one of the most important dynamic data structures in computer science.",
+  working: [
+    "Each node stores a value and a pointer to the next node in the sequence.",
+    "Insert creates a new node and adjusts pointers to link it into the correct position.",
+    "Delete removes a node and reconnects the pointers of its neighbors.",
+    "Search traverses the list from the head, following pointers until the value is found.",
+    "The last node points to null, marking the end of the list.",
+  ],
+  complexity: {
+    best: "O(1)",
+    average: "O(n)",
+    worst: "O(n)",
+    space: "O(n)",
+  },
+};
+export const treeContent: LearningContent = {
+  concept:
+    "Tree is a hierarchical, non-linear data structure consisting of a collection of nodes connected by edges, used to represent relationships between data elements. The topmost node is called the root, and each node may have zero or more child nodes, while a node with no children is called a leaf node. Every child node has exactly one parent, and there is a unique path from the root to every node, ensuring that a tree contains no cycles. Trees are widely used to organize and manage hierarchical data efficiently, such as file systems, organizational structures, XML/HTML documents, and database indexes. Common types of trees include Binary Tree, Binary Search Tree (BST), AVL Tree, Heap, B-Tree, and Trie, each designed for specific applications. Tree traversal techniques such as Preorder, Inorder, Postorder, and Level Order Traversal are used to visit and process nodes in different orders. The time complexity of search, insertion, and deletion depends on the type and balance of the tree; for example, a balanced binary search tree performs these operations in O(log n) time, while an unbalanced tree may require O(n) time. The space complexity of a tree is O(n), where n is the number of nodes. Due to their hierarchical structure, efficient searching capabilities, and versatility, trees are among the most important data structures used in computer science, databases, compilers, operating systems, and networking applications.",
+  working: [
+    "Inorder traversal visits the left subtree, then the current node, then the right subtree.",
+    "Preorder traversal visits the current node first, then the left subtree, then the right subtree.",
+    "Postorder traversal visits the left subtree, then the right subtree, then the current node last.",
+    "Each traversal method is typically implemented recursively, processing subtrees before or after the current node depending on the order.",
+  ],
+  complexity: {
+    best: "O(n)",
+    average: "O(n)",
+    worst: "O(n)",
+    space: "O(h)",
+  },
+};
