@@ -192,3 +192,19 @@ export const arrayContent: LearningContent = {
     space: "O(n)",
   },
 };
+export const queueContent: LearningContent = {
+  concept:
+    "Queue is a linear data structure that follows the First In, First Out (FIFO) principle, meaning the first element inserted into the queue is the first one to be removed. Elements are inserted at the rear (enqueue) and removed from the front (dequeue), ensuring that data is processed in the same order in which it arrives. In addition to the enqueue and dequeue operations, a queue also supports front (or peek) to view the first element without removing it and isEmpty or isFull operations in certain implementations. Queues can be implemented using arrays or linked lists and have several variations, including Circular Queue, Priority Queue, and Deque (Double-Ended Queue). They are widely used in CPU scheduling, printer spooling, process scheduling in operating systems, network packet handling, breadth-first search (BFS), buffering, task scheduling, and simulation systems where requests must be processed in the order they are received. The basic queue operations—enqueue, dequeue, front (peek), and rear—are performed in O(1) time in an efficient implementation, while the space complexity is O(n), where n is the number of elements stored in the queue. Due to its orderly processing mechanism, the queue is one of the most important data structures in computer science and is extensively used in real-world applications that require sequential processing of data.",
+  working: [
+    "Enqueue adds a new element to the rear of the queue.",
+    "Dequeue removes and returns the element at the front of the queue.",
+    "The front element is always the one that has been waiting the longest.",
+    "Attempting to dequeue from an empty queue is an invalid operation and produces an error.",
+  ],
+  complexity: {
+    best: "O(1)",
+    average: "O(1)",
+    worst: "O(1)",
+    space: "O(n)",
+  },
+};
