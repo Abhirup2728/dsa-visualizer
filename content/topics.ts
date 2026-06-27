@@ -123,3 +123,38 @@ export const binarySearchContent: LearningContent = {
     space: "O(1)",
   },
 };
+export const bfsContent: LearningContent = {
+  concept:
+    "Breadth-First Search (BFS) is a graph traversal algorithm that explores the vertices of a graph level by level, starting from a specified source vertex. It first visits the starting vertex, then all of its adjacent (neighboring) vertices, followed by the neighbors of those vertices, continuing until all reachable vertices have been visited. BFS uses a queue (FIFO) data structure to keep track of the next vertex to visit and a visited array or set to ensure that each vertex is processed only once. It is widely used for finding the shortest path in unweighted graphs, checking graph connectivity, traversing trees level by level, and solving network and routing problems. The time complexity of BFS is O(V + E), where V is the number of vertices and E is the number of edges, while its space complexity is O(V) due to the storage required for the queue and the visited array.",
+  working: [
+    "Start at the chosen node and mark it as visited.",
+    "Add the starting node to a queue.",
+    "Remove a node from the front of the queue and record it as visited.",
+    "Find all unvisited neighbors of that node and add them to the back of the queue.",
+    "Repeat until the queue is empty, meaning every reachable node has been visited.",
+  ],
+  complexity: {
+    best: "O(V + E)",
+    average: "O(V + E)",
+    worst: "O(V + E)",
+    space: "O(V)",
+  },
+};
+
+export const dfsContent: LearningContent = {
+  concept:
+    "Depth-First Search (DFS) is a graph traversal algorithm that explores a graph by visiting a vertex and then recursively exploring as far as possible along each branch before backtracking. Starting from a specified source vertex, DFS visits an unvisited adjacent vertex and continues this process until it reaches a vertex with no unvisited neighbors. It then backtracks to the previous vertex to explore any remaining unexplored paths. DFS can be implemented using recursion or an explicit stack (LIFO) data structure, along with a visited array or set to prevent revisiting vertices. It is widely used for graph traversal, detecting cycles, finding connected components, performing topological sorting, solving maze and pathfinding problems, and generating spanning trees. The time complexity of DFS is O(V + E), where V is the number of vertices and E is the number of edges, while its space complexity is O(V) due to the recursion stack or explicit stack and the visited array.",
+  working: [
+    "Start at the chosen node and mark it as visited.",
+    "Pick an unvisited neighbor and move to it, marking it as visited.",
+    "Continue moving to unvisited neighbors as deep as possible along this path.",
+    "When no unvisited neighbors remain, backtrack to the previous node.",
+    "Repeat until backtracking returns all the way to the start with no unvisited nodes left.",
+  ],
+  complexity: {
+    best: "O(V + E)",
+    average: "O(V + E)",
+    worst: "O(V + E)",
+    space: "O(V)",
+  },
+};
