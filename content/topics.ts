@@ -105,3 +105,21 @@ export const linearSearchContent: LearningContent = {
     space: "O(1)",
   },
 };
+export const binarySearchContent: LearningContent = {
+  concept:
+    "Binary Search is an efficient searching algorithm used to find a specific element in a sorted array or list. It works by repeatedly dividing the search space into two halves and comparing the target element with the middle element of the current range. If the target matches the middle element, the search is successful. If the target is smaller, the search continues in the left half; otherwise, it continues in the right half. This process is repeated until the element is found or the search range becomes empty, indicating that the element is not present. Binary Search requires the data to be sorted before searching, which is its primary limitation. Its time complexity is O(1) in the best case (when the target is the middle element), and O(log n) in the average and worst cases, making it significantly faster than Linear Search for large datasets. It requires O(1) extra space in the iterative implementation (or O(log n) in the recursive implementation due to the recursion stack), making it one of the most efficient searching algorithms for sorted data.",
+  working: [
+    "Confirm the array is sorted, since Binary Search depends on this.",
+    "Check the middle element of the current search range.",
+    "If it matches the target, the search is complete.",
+    "If the target is smaller, discard the right half and search only the left half.",
+    "If the target is larger, discard the left half and search only the right half.",
+    "Repeat until the target is found or the search range becomes empty.",
+  ],
+  complexity: {
+    best: "O(1)",
+    average: "O(log n)",
+    worst: "O(log n)",
+    space: "O(1)",
+  },
+};
