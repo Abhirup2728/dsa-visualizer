@@ -1,3 +1,9 @@
+export type CodeSnippets = {
+  cpp: string;
+  python: string;
+  java: string;
+};
+
 export type LearningContent = {
   concept: string;
   working: string[];
@@ -7,4 +13,5 @@ export type LearningContent = {
     worst: string;
     space: string;
   };
+  code: CodeSnippets;
 };

@@ -17,6 +17,46 @@ export const bubbleSortContent: LearningContent = {
     worst: "O(n²)",
     space: "O(1)",
   },
+  code: {
+    cpp: `void bubbleSort(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        bool swapped = false;
+        for (int j = 0; j < n - 1 - i; j++) {
+            if (arr[j] > arr[j + 1]) {
+                swap(arr[j], arr[j + 1]);
+                swapped = true;
+            }
+        }
+        if (!swapped) break;
+    }
+}`,
+    python: `def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n - 1):
+        swapped = False
+        for j in range(n - 1 - i):
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+                swapped = True
+        if not swapped:
+            break
+    return arr`,
+    java: `void bubbleSort(int[] arr) {
+    int n = arr.length;
+    for (int i = 0; i < n - 1; i++) {
+        boolean swapped = false;
+        for (int j = 0; j < n - 1 - i; j++) {
+            if (arr[j] > arr[j + 1]) {
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+                swapped = true;
+            }
+        }
+        if (!swapped) break;
+    }
+}`,
+  },
 };
 export const selectionSortContent: LearningContent = {
   concept:
@@ -33,6 +73,47 @@ export const selectionSortContent: LearningContent = {
     average: "O(n²)",
     worst: "O(n²)",
     space: "O(1)",
+  },
+  code: {
+    cpp: `void selectionSort(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        int minIndex = i;
+        for (int j = i + 1; j < n; j++) {
+            if (arr[j] < arr[minIndex]) {
+                minIndex = j;
+            }
+        }
+        if (minIndex != i) {
+            swap(arr[i], arr[minIndex]);
+        }
+    }
+}`,
+    python: `def selection_sort(arr):
+    n = len(arr)
+    for i in range(n - 1):
+        min_index = i
+        for j in range(i + 1, n):
+            if arr[j] < arr[min_index]:
+                min_index = j
+        if min_index != i:
+            arr[i], arr[min_index] = arr[min_index], arr[i]
+    return arr`,
+    java: `void selectionSort(int[] arr) {
+    int n = arr.length;
+    for (int i = 0; i < n - 1; i++) {
+        int minIndex = i;
+        for (int j = i + 1; j < n; j++) {
+            if (arr[j] < arr[minIndex]) {
+                minIndex = j;
+            }
+        }
+        if (minIndex != i) {
+            int temp = arr[i];
+            arr[i] = arr[minIndex];
+            arr[minIndex] = temp;
+        }
+    }
+}`,
   },
 };
 export const insertionSortContent: LearningContent = {
@@ -52,6 +133,41 @@ export const insertionSortContent: LearningContent = {
     worst: "O(n²)",
     space: "O(1)",
   },
+  code: {
+    cpp: `void insertionSort(int arr[], int n) {
+    for (int i = 1; i < n; i++) {
+        int current = arr[i];
+        int j = i - 1;
+        while (j >= 0 && arr[j] > current) {
+            arr[j + 1] = arr[j];
+            j--;
+        }
+        arr[j + 1] = current;
+    }
+}`,
+    python: `def insertion_sort(arr):
+    n = len(arr)
+    for i in range(1, n):
+        current = arr[i]
+        j = i - 1
+        while j >= 0 and arr[j] > current:
+            arr[j + 1] = arr[j]
+            j -= 1
+        arr[j + 1] = current
+    return arr`,
+    java: `void insertionSort(int[] arr) {
+    int n = arr.length;
+    for (int i = 1; i < n; i++) {
+        int current = arr[i];
+        int j = i - 1;
+        while (j >= 0 && arr[j] > current) {
+            arr[j + 1] = arr[j];
+            j--;
+        }
+        arr[j + 1] = current;
+    }
+}`,
+  },
 };
 export const mergeSortContent: LearningContent = {
   concept:
@@ -68,6 +184,66 @@ export const mergeSortContent: LearningContent = {
     average: "O(n log n)",
     worst: "O(n log n)",
     space: "O(n)",
+  },
+   code: {
+    cpp: `void merge(int arr[], int low, int mid, int high) {
+    vector<int> left(arr + low, arr + mid + 1);
+    vector<int> right(arr + mid + 1, arr + high + 1);
+    int i = 0, j = 0, k = low;
+
+    while (i < left.size() && j < right.size()) {
+        arr[k++] = (left[i] <= right[j]) ? left[i++] : right[j++];
+    }
+    while (i < left.size()) arr[k++] = left[i++];
+    while (j < right.size()) arr[k++] = right[j++];
+}
+
+void mergeSort(int arr[], int low, int high) {
+    if (low >= high) return;
+    int mid = (low + high) / 2;
+    mergeSort(arr, low, mid);
+    mergeSort(arr, mid + 1, high);
+    merge(arr, low, mid, high);
+}`,
+    python: `def merge_sort(arr):
+    if len(arr) <= 1:
+        return arr
+
+    mid = len(arr) // 2
+    left = merge_sort(arr[:mid])
+    right = merge_sort(arr[mid:])
+
+    result = []
+    i = j = 0
+    while i < len(left) and j < len(right):
+        if left[i] <= right[j]:
+            result.append(left[i])
+            i += 1
+        else:
+            result.append(right[j])
+            j += 1
+    result.extend(left[i:])
+    result.extend(right[j:])
+    return result`,
+    java: `void mergeSort(int[] arr, int low, int high) {
+    if (low >= high) return;
+    int mid = (low + high) / 2;
+    mergeSort(arr, low, mid);
+    mergeSort(arr, mid + 1, high);
+    merge(arr, low, mid, high);
+}
+
+void merge(int[] arr, int low, int mid, int high) {
+    int[] left = Arrays.copyOfRange(arr, low, mid + 1);
+    int[] right = Arrays.copyOfRange(arr, mid + 1, high + 1);
+    int i = 0, j = 0, k = low;
+
+    while (i < left.length && j < right.length) {
+        arr[k++] = (left[i] <= right[j]) ? left[i++] : right[j++];
+    }
+    while (i < left.length) arr[k++] = left[i++];
+    while (j < right.length) arr[k++] = right[j++];
+}`,
   },
 };
 export const quickSortContent: LearningContent = {
@@ -87,6 +263,71 @@ export const quickSortContent: LearningContent = {
     worst: "O(n²)",
     space: "O(log n)",
   },
+  code: {
+    cpp: `int partition(int arr[], int low, int high) {
+    int pivot = arr[high];
+    int i = low - 1;
+
+    for (int j = low; j < high; j++) {
+        if (arr[j] < pivot) {
+            i++;
+            swap(arr[i], arr[j]);
+        }
+    }
+    swap(arr[i + 1], arr[high]);
+    return i + 1;
+}
+
+void quickSort(int arr[], int low, int high) {
+    if (low < high) {
+        int pivotIndex = partition(arr, low, high);
+        quickSort(arr, low, pivotIndex - 1);
+        quickSort(arr, pivotIndex + 1, high);
+    }
+}`,
+    python: `def partition(arr, low, high):
+    pivot = arr[high]
+    i = low - 1
+
+    for j in range(low, high):
+        if arr[j] < pivot:
+            i += 1
+            arr[i], arr[j] = arr[j], arr[i]
+
+    arr[i + 1], arr[high] = arr[high], arr[i + 1]
+    return i + 1
+
+def quick_sort(arr, low, high):
+    if low < high:
+        pivot_index = partition(arr, low, high)
+        quick_sort(arr, low, pivot_index - 1)
+        quick_sort(arr, pivot_index + 1, high)`,
+    java: `int partition(int[] arr, int low, int high) {
+    int pivot = arr[high];
+    int i = low - 1;
+
+    for (int j = low; j < high; j++) {
+        if (arr[j] < pivot) {
+            i++;
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+    }
+    int temp = arr[i + 1];
+    arr[i + 1] = arr[high];
+    arr[high] = temp;
+    return i + 1;
+}
+
+void quickSort(int[] arr, int low, int high) {
+    if (low < high) {
+        int pivotIndex = partition(arr, low, high);
+        quickSort(arr, low, pivotIndex - 1);
+        quickSort(arr, pivotIndex + 1, high);
+    }
+}`,
+  },
 };
 export const linearSearchContent: LearningContent = {
   concept:
@@ -103,6 +344,29 @@ export const linearSearchContent: LearningContent = {
     average: "O(n)",
     worst: "O(n)",
     space: "O(1)",
+  },
+  code: {
+    cpp: `int linearSearch(int arr[], int n, int target) {
+    for (int i = 0; i < n; i++) {
+        if (arr[i] == target) {
+            return i;
+        }
+    }
+    return -1;
+}`,
+    python: `def linear_search(arr, target):
+    for i in range(len(arr)):
+        if arr[i] == target:
+            return i
+    return -1`,
+    java: `int linearSearch(int[] arr, int target) {
+    for (int i = 0; i < arr.length; i++) {
+        if (arr[i] == target) {
+            return i;
+        }
+    }
+    return -1;
+}`,
   },
 };
 export const binarySearchContent: LearningContent = {
@@ -122,6 +386,50 @@ export const binarySearchContent: LearningContent = {
     worst: "O(log n)",
     space: "O(1)",
   },
+  code: {
+    cpp: `int binarySearch(int arr[], int n, int target) {
+    int low = 0, high = n - 1;
+
+    while (low <= high) {
+        int mid = (low + high) / 2;
+        if (arr[mid] == target) {
+            return mid;
+        } else if (arr[mid] < target) {
+            low = mid + 1;
+        } else {
+            high = mid - 1;
+        }
+    }
+    return -1;
+}`,
+    python: `def binary_search(arr, target):
+    low, high = 0, len(arr) - 1
+
+    while low <= high:
+        mid = (low + high) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return -1`,
+    java: `int binarySearch(int[] arr, int target) {
+    int low = 0, high = arr.length - 1;
+
+    while (low <= high) {
+        int mid = (low + high) / 2;
+        if (arr[mid] == target) {
+            return mid;
+        } else if (arr[mid] < target) {
+            low = mid + 1;
+        } else {
+            high = mid - 1;
+        }
+    }
+    return -1;
+}`,
+  },
 };
 export const bfsContent: LearningContent = {
   concept:
@@ -138,6 +446,64 @@ export const bfsContent: LearningContent = {
     average: "O(V + E)",
     worst: "O(V + E)",
     space: "O(V)",
+  },
+  code: {
+    cpp: `void bfs(unordered_map<int, vector<int>>& adjList, int start) {
+    queue<int> q;
+    unordered_set<int> visited;
+
+    q.push(start);
+    visited.insert(start);
+
+    while (!q.empty()) {
+        int current = q.front();
+        q.pop();
+        cout << current << " ";
+
+        for (int neighbor : adjList[current]) {
+            if (visited.find(neighbor) == visited.end()) {
+                visited.insert(neighbor);
+                q.push(neighbor);
+            }
+        }
+    }
+}`,
+    python: `from collections import deque
+
+def bfs(graph, start):
+    visited = {start}
+    queue = deque([start])
+    order = []
+
+    while queue:
+        current = queue.popleft()
+        order.append(current)
+
+        for neighbor in graph[current]:
+            if neighbor not in visited:
+                visited.add(neighbor)
+                queue.append(neighbor)
+
+    return order`,
+    java: `void bfs(Map<Integer, List<Integer>> adjList, int start) {
+    Queue<Integer> queue = new LinkedList<>();
+    Set<Integer> visited = new HashSet<>();
+
+    queue.add(start);
+    visited.add(start);
+
+    while (!queue.isEmpty()) {
+        int current = queue.poll();
+        System.out.print(current + " ");
+
+        for (int neighbor : adjList.get(current)) {
+            if (!visited.contains(neighbor)) {
+                visited.add(neighbor);
+                queue.add(neighbor);
+            }
+        }
+    }
+}`,
   },
 };
 
@@ -157,6 +523,41 @@ export const dfsContent: LearningContent = {
     worst: "O(V + E)",
     space: "O(V)",
   },
+  code: {
+    cpp: `void dfs(unordered_map<int, vector<int>>& adjList, int current, unordered_set<int>& visited) {
+    visited.insert(current);
+    cout << current << " ";
+
+    for (int neighbor : adjList[current]) {
+        if (visited.find(neighbor) == visited.end()) {
+            dfs(adjList, neighbor, visited);
+        }
+    }
+}`,
+    python: `def dfs(graph, current, visited=None, order=None):
+    if visited is None:
+        visited = set()
+        order = []
+
+    visited.add(current)
+    order.append(current)
+
+    for neighbor in graph[current]:
+        if neighbor not in visited:
+            dfs(graph, neighbor, visited, order)
+
+    return order`,
+    java: `void dfs(Map<Integer, List<Integer>> adjList, int current, Set<Integer> visited) {
+    visited.add(current);
+    System.out.print(current + " ");
+
+    for (int neighbor : adjList.get(current)) {
+        if (!visited.contains(neighbor)) {
+            dfs(adjList, neighbor, visited);
+        }
+    }
+}`,
+  },
 };
 export const stackContent: LearningContent = {
   concept:
@@ -173,6 +574,71 @@ export const stackContent: LearningContent = {
     average: "O(1)",
     worst: "O(1)",
     space: "O(n)",
+  },
+  code: {
+    cpp: `class Stack {
+    vector<int> items;
+public:
+    void push(int value) {
+        items.push_back(value);
+    }
+
+    int pop() {
+        if (items.empty()) throw runtime_error("Stack is empty");
+        int top = items.back();
+        items.pop_back();
+        return top;
+    }
+
+    int peek() {
+        if (items.empty()) throw runtime_error("Stack is empty");
+        return items.back();
+    }
+
+    bool isEmpty() {
+        return items.empty();
+    }
+};`,
+    python: `class Stack:
+    def __init__(self):
+        self.items = []
+
+    def push(self, value):
+        self.items.append(value)
+
+    def pop(self):
+        if not self.items:
+            raise IndexError("Stack is empty")
+        return self.items.pop()
+
+    def peek(self):
+        if not self.items:
+            raise IndexError("Stack is empty")
+        return self.items[-1]
+
+    def is_empty(self):
+        return len(self.items) == 0`,
+    java: `class Stack {
+    private List<Integer> items = new ArrayList<>();
+
+    public void push(int value) {
+        items.add(value);
+    }
+
+    public int pop() {
+        if (items.isEmpty()) throw new RuntimeException("Stack is empty");
+        return items.remove(items.size() - 1);
+    }
+
+    public int peek() {
+        if (items.isEmpty()) throw new RuntimeException("Stack is empty");
+        return items.get(items.size() - 1);
+    }
+
+    public boolean isEmpty() {
+        return items.isEmpty();
+    }
+}`,
   },
 };
 export const arrayContent: LearningContent = {
@@ -191,6 +657,61 @@ export const arrayContent: LearningContent = {
     worst: "O(n)",
     space: "O(n)",
   },
+  code: {
+    cpp: `void insertAt(int arr[], int& n, int index, int value) {
+    for (int i = n; i > index; i--) {
+        arr[i] = arr[i - 1];
+    }
+    arr[index] = value;
+    n++;
+}
+
+void deleteAt(int arr[], int& n, int index) {
+    for (int i = index; i < n - 1; i++) {
+        arr[i] = arr[i + 1];
+    }
+    n--;
+}
+
+int search(int arr[], int n, int target) {
+    for (int i = 0; i < n; i++) {
+        if (arr[i] == target) return i;
+    }
+    return -1;
+}`,
+    python: `def insert_at(arr, index, value):
+    arr.insert(index, value)
+    return arr
+
+def delete_at(arr, index):
+    arr.pop(index)
+    return arr
+
+def search(arr, target):
+    for i in range(len(arr)):
+        if arr[i] == target:
+            return i
+    return -1`,
+    java: `void insertAt(int[] arr, int size, int index, int value) {
+    for (int i = size; i > index; i--) {
+        arr[i] = arr[i - 1];
+    }
+    arr[index] = value;
+}
+
+void deleteAt(int[] arr, int size, int index) {
+    for (int i = index; i < size - 1; i++) {
+        arr[i] = arr[i + 1];
+    }
+}
+
+int search(int[] arr, int target) {
+    for (int i = 0; i < arr.length; i++) {
+        if (arr[i] == target) return i;
+    }
+    return -1;
+}`,
+  },
 };
 export const queueContent: LearningContent = {
   concept:
@@ -206,6 +727,73 @@ export const queueContent: LearningContent = {
     average: "O(1)",
     worst: "O(1)",
     space: "O(n)",
+  },
+  code: {
+    cpp: `class Queue {
+    deque<int> items;
+public:
+    void enqueue(int value) {
+        items.push_back(value);
+    }
+
+    int dequeue() {
+        if (items.empty()) throw runtime_error("Queue is empty");
+        int front = items.front();
+        items.pop_front();
+        return front;
+    }
+
+    int peek() {
+        if (items.empty()) throw runtime_error("Queue is empty");
+        return items.front();
+    }
+
+    bool isEmpty() {
+        return items.empty();
+    }
+};`,
+    python: `from collections import deque
+
+class Queue:
+    def __init__(self):
+        self.items = deque()
+
+    def enqueue(self, value):
+        self.items.append(value)
+
+    def dequeue(self):
+        if not self.items:
+            raise IndexError("Queue is empty")
+        return self.items.popleft()
+
+    def peek(self):
+        if not self.items:
+            raise IndexError("Queue is empty")
+        return self.items[0]
+
+    def is_empty(self):
+        return len(self.items) == 0`,
+    java: `class Queue {
+    private LinkedList<Integer> items = new LinkedList<>();
+
+    public void enqueue(int value) {
+        items.addLast(value);
+    }
+
+    public int dequeue() {
+        if (items.isEmpty()) throw new RuntimeException("Queue is empty");
+        return items.removeFirst();
+    }
+
+    public int peek() {
+        if (items.isEmpty()) throw new RuntimeException("Queue is empty");
+        return items.getFirst();
+    }
+
+    public boolean isEmpty() {
+        return items.isEmpty();
+    }
+}`,
   },
 };
 export const linkedListContent: LearningContent = {
@@ -224,6 +812,108 @@ export const linkedListContent: LearningContent = {
     worst: "O(n)",
     space: "O(n)",
   },
+  code: {
+    cpp: `struct Node {
+    int value;
+    Node* next;
+    Node(int val) : value(val), next(nullptr) {}
+};
+
+class LinkedList {
+    Node* head = nullptr;
+public:
+    void insertAt(int index, int value) {
+        Node* newNode = new Node(value);
+        if (index == 0) {
+            newNode->next = head;
+            head = newNode;
+            return;
+        }
+        Node* current = head;
+        for (int i = 0; i < index - 1; i++) current = current->next;
+        newNode->next = current->next;
+        current->next = newNode;
+    }
+
+    void deleteAt(int index) {
+        if (index == 0) {
+            Node* temp = head;
+            head = head->next;
+            delete temp;
+            return;
+        }
+        Node* current = head;
+        for (int i = 0; i < index - 1; i++) current = current->next;
+        Node* temp = current->next;
+        current->next = temp->next;
+        delete temp;
+    }
+};`,
+    python: `class Node:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def insert_at(self, index, value):
+        new_node = Node(value)
+        if index == 0:
+            new_node.next = self.head
+            self.head = new_node
+            return
+        current = self.head
+        for _ in range(index - 1):
+            current = current.next
+        new_node.next = current.next
+        current.next = new_node
+
+    def delete_at(self, index):
+        if index == 0:
+            self.head = self.head.next
+            return
+        current = self.head
+        for _ in range(index - 1):
+            current = current.next
+        current.next = current.next.next`,
+    java: `class Node {
+    int value;
+    Node next;
+    Node(int value) {
+        this.value = value;
+        this.next = null;
+    }
+}
+
+class LinkedList {
+    Node head;
+
+    void insertAt(int index, int value) {
+        Node newNode = new Node(value);
+        if (index == 0) {
+            newNode.next = head;
+            head = newNode;
+            return;
+        }
+        Node current = head;
+        for (int i = 0; i < index - 1; i++) current = current.next;
+        newNode.next = current.next;
+        current.next = newNode;
+    }
+
+    void deleteAt(int index) {
+        if (index == 0) {
+            head = head.next;
+            return;
+        }
+        Node current = head;
+        for (int i = 0; i < index - 1; i++) current = current.next;
+        current.next = current.next.next;
+    }
+}`,
+  },
 };
 export const treeContent: LearningContent = {
   concept:
@@ -239,6 +929,98 @@ export const treeContent: LearningContent = {
     average: "O(n)",
     worst: "O(n)",
     space: "O(h)",
+  },
+  code: {
+    cpp: `struct Node {
+    int value;
+    Node* left;
+    Node* right;
+    Node(int val) : value(val), left(nullptr), right(nullptr) {}
+};
+
+void inorder(Node* root) {
+    if (root == nullptr) return;
+    inorder(root->left);
+    cout << root->value << " ";
+    inorder(root->right);
+}
+
+void preorder(Node* root) {
+    if (root == nullptr) return;
+    cout << root->value << " ";
+    preorder(root->left);
+    preorder(root->right);
+}
+
+void postorder(Node* root) {
+    if (root == nullptr) return;
+    postorder(root->left);
+    postorder(root->right);
+    cout << root->value << " ";
+}`,
+    python: `class Node:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+
+def inorder(root, result=None):
+    if result is None:
+        result = []
+    if root is None:
+        return result
+    inorder(root.left, result)
+    result.append(root.value)
+    inorder(root.right, result)
+    return result
+
+def preorder(root, result=None):
+    if result is None:
+        result = []
+    if root is None:
+        return result
+    result.append(root.value)
+    preorder(root.left, result)
+    preorder(root.right, result)
+    return result
+
+def postorder(root, result=None):
+    if result is None:
+        result = []
+    if root is None:
+        return result
+    postorder(root.left, result)
+    postorder(root.right, result)
+    result.append(root.value)
+    return result`,
+    java: `class Node {
+    int value;
+    Node left, right;
+    Node(int value) {
+        this.value = value;
+    }
+}
+
+void inorder(Node root) {
+    if (root == null) return;
+    inorder(root.left);
+    System.out.print(root.value + " ");
+    inorder(root.right);
+}
+
+void preorder(Node root) {
+    if (root == null) return;
+    System.out.print(root.value + " ");
+    preorder(root.left);
+    preorder(root.right);
+}
+
+void postorder(Node root) {
+    if (root == null) return;
+    postorder(root.left);
+    postorder(root.right);
+    System.out.print(root.value + " ");
+}`,
   },
 };
 export const bstContent: LearningContent = {
@@ -256,6 +1038,127 @@ export const bstContent: LearningContent = {
     worst: "O(n)",
     space: "O(n)",
   },
+  code: {
+    cpp: `struct Node {
+    int value;
+    Node* left;
+    Node* right;
+    Node(int val) : value(val), left(nullptr), right(nullptr) {}
+};
+
+Node* insert(Node* root, int value) {
+    if (root == nullptr) return new Node(value);
+    if (value < root->value) {
+        root->left = insert(root->left, value);
+    } else if (value > root->value) {
+        root->right = insert(root->right, value);
+    }
+    return root;
+}
+
+Node* search(Node* root, int value) {
+    if (root == nullptr || root->value == value) return root;
+    if (value < root->value) return search(root->left, value);
+    return search(root->right, value);
+}
+
+Node* deleteNode(Node* root, int value) {
+    if (root == nullptr) return nullptr;
+    if (value < root->value) {
+        root->left = deleteNode(root->left, value);
+    } else if (value > root->value) {
+        root->right = deleteNode(root->right, value);
+    } else {
+        if (root->left == nullptr) return root->right;
+        if (root->right == nullptr) return root->left;
+        Node* successor = root->right;
+        while (successor->left != nullptr) successor = successor->left;
+        root->value = successor->value;
+        root->right = deleteNode(root->right, successor->value);
+    }
+    return root;
+}`,
+    python: `class Node:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+
+def insert(root, value):
+    if root is None:
+        return Node(value)
+    if value < root.value:
+        root.left = insert(root.left, value)
+    elif value > root.value:
+        root.right = insert(root.right, value)
+    return root
+
+def search(root, value):
+    if root is None or root.value == value:
+        return root
+    if value < root.value:
+        return search(root.left, value)
+    return search(root.right, value)
+
+def delete_node(root, value):
+    if root is None:
+        return None
+    if value < root.value:
+        root.left = delete_node(root.left, value)
+    elif value > root.value:
+        root.right = delete_node(root.right, value)
+    else:
+        if root.left is None:
+            return root.right
+        if root.right is None:
+            return root.left
+        successor = root.right
+        while successor.left is not None:
+            successor = successor.left
+        root.value = successor.value
+        root.right = delete_node(root.right, successor.value)
+    return root`,
+    java: `class Node {
+    int value;
+    Node left, right;
+    Node(int value) {
+        this.value = value;
+    }
+}
+
+Node insert(Node root, int value) {
+    if (root == null) return new Node(value);
+    if (value < root.value) {
+        root.left = insert(root.left, value);
+    } else if (value > root.value) {
+        root.right = insert(root.right, value);
+    }
+    return root;
+}
+
+Node search(Node root, int value) {
+    if (root == null || root.value == value) return root;
+    if (value < root.value) return search(root.left, value);
+    return search(root.right, value);
+}
+
+Node deleteNode(Node root, int value) {
+    if (root == null) return null;
+    if (value < root.value) {
+        root.left = deleteNode(root.left, value);
+    } else if (value > root.value) {
+        root.right = deleteNode(root.right, value);
+    } else {
+        if (root.left == null) return root.right;
+        if (root.right == null) return root.left;
+        Node successor = root.right;
+        while (successor.left != null) successor = successor.left;
+        root.value = successor.value;
+        root.right = deleteNode(root.right, successor.value);
+    }
+    return root;
+}`,
+  },
 };
 export const heapContent: LearningContent = {
   concept:
@@ -271,6 +1174,92 @@ export const heapContent: LearningContent = {
     average: "O(log n)",
     worst: "O(log n)",
     space: "O(n)",
+  },
+  code: {
+    cpp: `class MinHeap {
+    vector<int> heap;
+public:
+    void insert(int value) {
+        heap.push_back(value);
+        int i = heap.size() - 1;
+        while (i > 0 && heap[(i - 1) / 2] > heap[i]) {
+            swap(heap[(i - 1) / 2], heap[i]);
+            i = (i - 1) / 2;
+        }
+    }
+
+    int extractMin() {
+        int min = heap[0];
+        heap[0] = heap.back();
+        heap.pop_back();
+        int i = 0;
+        while (true) {
+            int left = 2 * i + 1, right = 2 * i + 2, smallest = i;
+            if (left < heap.size() && heap[left] < heap[smallest]) smallest = left;
+            if (right < heap.size() && heap[right] < heap[smallest]) smallest = right;
+            if (smallest == i) break;
+            swap(heap[i], heap[smallest]);
+            i = smallest;
+        }
+        return min;
+    }
+};`,
+    python: `class MinHeap:
+    def __init__(self):
+        self.heap = []
+
+    def insert(self, value):
+        self.heap.append(value)
+        i = len(self.heap) - 1
+        while i > 0 and self.heap[(i - 1) // 2] > self.heap[i]:
+            parent = (i - 1) // 2
+            self.heap[parent], self.heap[i] = self.heap[i], self.heap[parent]
+            i = parent
+
+    def extract_min(self):
+        min_val = self.heap[0]
+        self.heap[0] = self.heap.pop()
+        i = 0
+        n = len(self.heap)
+        while True:
+            left, right, smallest = 2 * i + 1, 2 * i + 2, i
+            if left < n and self.heap[left] < self.heap[smallest]:
+                smallest = left
+            if right < n and self.heap[right] < self.heap[smallest]:
+                smallest = right
+            if smallest == i:
+                break
+            self.heap[i], self.heap[smallest] = self.heap[smallest], self.heap[i]
+            i = smallest
+        return min_val`,
+    java: `class MinHeap {
+    private List<Integer> heap = new ArrayList<>();
+
+    public void insert(int value) {
+        heap.add(value);
+        int i = heap.size() - 1;
+        while (i > 0 && heap.get((i - 1) / 2) > heap.get(i)) {
+            int parent = (i - 1) / 2;
+            Collections.swap(heap, i, parent);
+            i = parent;
+        }
+    }
+
+    public int extractMin() {
+        int min = heap.get(0);
+        heap.set(0, heap.remove(heap.size() - 1));
+        int i = 0;
+        while (true) {
+            int left = 2 * i + 1, right = 2 * i + 2, smallest = i;
+            if (left < heap.size() && heap.get(left) < heap.get(smallest)) smallest = left;
+            if (right < heap.size() && heap.get(right) < heap.get(smallest)) smallest = right;
+            if (smallest == i) break;
+            Collections.swap(heap, i, smallest);
+            i = smallest;
+        }
+        return min;
+    }
+}`,
   },
 };
 export const graphContent: LearningContent = {
@@ -288,5 +1277,62 @@ export const graphContent: LearningContent = {
     average: "O(V + E)",
     worst: "O(V + E)",
     space: "O(V + E)",
+  },
+  code: {
+    cpp: `class Graph {
+    unordered_map<int, vector<int>> adjList;
+public:
+    void addNode(int id) {
+        adjList[id];
+    }
+
+    void addEdge(int from, int to) {
+        adjList[from].push_back(to);
+        adjList[to].push_back(from);
+    }
+
+    void removeNode(int id) {
+        for (int neighbor : adjList[id]) {
+            auto& neighbors = adjList[neighbor];
+            neighbors.erase(remove(neighbors.begin(), neighbors.end(), id), neighbors.end());
+        }
+        adjList.erase(id);
+    }
+};`,
+    python: `class Graph:
+    def __init__(self):
+        self.adj_list = {}
+
+    def add_node(self, node_id):
+        if node_id not in self.adj_list:
+            self.adj_list[node_id] = []
+
+    def add_edge(self, from_id, to_id):
+        self.adj_list[from_id].append(to_id)
+        self.adj_list[to_id].append(from_id)
+
+    def remove_node(self, node_id):
+        for neighbor in self.adj_list.get(node_id, []):
+            self.adj_list[neighbor].remove(node_id)
+        self.adj_list.pop(node_id, None)`,
+    java: `class Graph {
+    private Map<Integer, List<Integer>> adjList = new HashMap<>();
+
+    public void addNode(int id) {
+        adjList.putIfAbsent(id, new ArrayList<>());
+    }
+
+    public void addEdge(int from, int to) {
+        adjList.get(from).add(to);
+        adjList.get(to).add(from);
+    }
+
+    public void removeNode(int id) {
+        for (int neighbor : adjList.get(id)) {
+            adjList.get(neighbor).remove(Integer.valueOf(id));
+        }
+        adjList.remove(id);
+    }
+}`,
   },
 };
