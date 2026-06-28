@@ -1,53 +1,107 @@
+<div align="center">
+
 # DSA Visualizer
 
-An interactive web platform for learning Data Structures and Algorithms through real-time, controllable visualizations. Built to turn abstract algorithmic concepts into something you can actually watch happen, step by step.
+**Interactive platform for learning Data Structures & Algorithms through real-time, controllable visualizations**
 
-**Live demo:** https://dsa-visualizer-abhirup2728.vercel.app
+[Live Demo](https://dsa-visualizer-abhirup2728.vercel.app) · [Report an Issue](https://github.com/Abhirup2728/dsa-visualizer/issues)
 
-Developed by Abhirup Gumtya
+</div>
 
 ---
 
-## What this is
+## Overview
 
-DSA Visualizer lets you pick any of 17 classic data structures and algorithms, then watch them execute with full Play / Pause / Step / Speed controls. Every topic includes a plain-English explanation, a step-by-step breakdown of how it works, and its time/space complexity — so the platform doubles as a self-contained interview prep tool, with no external resources needed.
+DSA Visualizer turns abstract algorithmic concepts into something you can actually watch happen. Pick any of 17 classic data structures and algorithms, then step through their execution with full **Play / Pause / Step / Speed** controls — no external resources needed.
+
+Every topic ships with a Concept explanation, a step-by-step Working breakdown, and a Best/Average/Worst/Space Complexity table, making this a self-contained interview preparation tool as well as a learning aid.
 
 ## Features
 
-- **5 sorting algorithms**: Bubble, Selection, Insertion, Merge, Quick Sort
-- **2 searching algorithms**: Linear Search, Binary Search
-- **2 graph algorithms**: BFS, DFS, with live traversal animation on an interactive graph
-- **8 data structures**: Array, Stack, Queue, Linked List, Tree, Binary Search Tree, Heap, Graph — each with full Insert / Delete / Search / Traverse / Reset support and real-time visual feedback
-- Every topic includes a Concept / Working / Complexity learning panel
-- Invalid operations (e.g. popping an empty stack) show clear, immediate feedback
-- Fully responsive layout, built with accessibility in mind (keyboard navigation, color-independent highlighting)
+### Sorting Algorithms
+| Algorithm | Best Case | Average Case | Worst Case |
+|---|---|---|---|
+| Bubble Sort | O(n) | O(n²) | O(n²) |
+| Selection Sort | O(n²) | O(n²) | O(n²) |
+| Insertion Sort | O(n) | O(n²) | O(n²) |
+| Merge Sort | O(n log n) | O(n log n) | O(n log n) |
+| Quick Sort | O(n log n) | O(n log n) | O(n²) |
 
-## Tech stack
+### Searching & Graph Algorithms
+- **Linear Search** — O(n)
+- **Binary Search** — O(log n)
+- **BFS** — level-by-level traversal, O(V + E)
+- **DFS** — depth-first traversal, O(V + E)
 
-- **Framework**: Next.js 16 (App Router)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS 4
-- **Visualization**: SVG-based rendering, plain CSS transitions
-- **Deployment**: Vercel
+### Data Structures
+Array · Stack · Queue · Linked List · Tree · Binary Search Tree · Heap · Graph
 
-No backend or database — the entire application runs client-side in the browser.
+Each structure supports live Insert / Delete / Search / Traverse / Reset, with immediate visual feedback and meaningful error messages on invalid operations (e.g. popping an empty stack).
 
-## Getting started locally
+## Tech Stack
 
-Clone the repository and install dependencies:
+| Layer | Technology |
+|---|---|
+| Framework | Next.js 16 (App Router) |
+| Language | TypeScript |
+| Styling | Tailwind CSS 4 |
+| Visualization | SVG, CSS transitions |
+| Deployment | Vercel |
+
+No backend, no database — fully client-side.
+
+## Getting Started
 
 ```bash
 git clone https://github.com/Abhirup2728/dsa-visualizer.git
 cd dsa-visualizer
 npm install
-```
-
-Run the development server:
-
-```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Open [http://localhost:3000](http://localhost:3000).
 
-## Project structure
+## Project Structure
+dsa-visualizer/
+
+├── app/
+
+│   ├── algorithms/
+
+│   │   ├── sorting/         5 sorting algorithm pages
+
+│   │   ├── searching/       Linear & Binary search pages
+
+│   │   └── graph/           BFS & DFS pages
+
+│   └── data-structures/     8 data structure pages
+
+├── components/
+
+│   ├── layout/               Navbar, Sidebar
+
+│   ├── visualizer/            ArrayBar, SearchBar, GraphCanvas, TreeCanvas
+
+│   └── learning/              LearningPanel (Concept / Working / Complexity)
+
+├── lib/
+
+│   ├── algorithms/            Step-generating logic per algorithm
+
+│   ├── dataStructures/        BST and Heap logic
+
+│   └── graphs/                 Sample graph data
+
+├── content/
+
+│   └── topics.ts               All learning content, centralized
+
+└── types/                      Shared TypeScript definitions
+## Design Notes
+
+Rather than animating algorithms live, each algorithm runs instantly and records a snapshot at every comparison, swap, or traversal step. The UI then plays back through this pre-computed sequence — the same mechanism powers Play, Pause, Step Forward, and Speed control across every algorithm, including recursive ones like Merge Sort and Quick Sort.
+
+## Author
+
+**Abhirup Gumtya**
+[GitHub](https://github.com/Abhirup2728) · [LinkedIn](https://linkedin.com/in/abhirupgumtya) · [Portfolio](https://abhirup-gumtya-portfolio.netlify.app)
