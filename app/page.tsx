@@ -85,7 +85,7 @@ export default function Home() {
         <p className="text-xs font-medium text-zinc-400 uppercase tracking-wide mb-3">
           Interactive Learning Platform
         </p>
-        <h1 className="text-3xl md:text-4xl font-semibold mb-4 max-w-2xl mx-auto leading-tight">
+        <h1 className="text-3xl md:text-4xl font-semibold mb-4 max-w-2xl mx-auto leading-tight text-zinc-900">
           Learn data structures and algorithms by watching them run
         </h1>
         <p className="text-zinc-600 max-w-lg mx-auto mb-2 leading-relaxed">

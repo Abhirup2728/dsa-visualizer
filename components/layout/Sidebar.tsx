@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 
 const dataStructures = [
@@ -32,9 +35,11 @@ const graphAlgorithms = [
 function SidebarSection({
   title,
   items,
+  onLinkClick,
 }: {
   title: string;
   items: { name: string; href: string }[];
+  onLinkClick: () => void;
 }) {
   return (
     <div className="mb-5">
@@ -46,6 +51,7 @@ function SidebarSection({
           <Link
             key={item.href}
             href={item.href}
+            onClick={onLinkClick}
             className="text-sm text-zinc-700 hover:bg-zinc-100 rounded px-2 py-1.5 transition-colors"
           >
             {item.name}
@@ -57,12 +63,53 @@ function SidebarSection({
 }
 
 export default function Sidebar() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  function close() {
+    setIsOpen(false);
+  }
+
   return (
-    <aside className="w-56 border-r border-zinc-200 bg-zinc-50 p-3 overflow-y-auto shrink-0">
-      <SidebarSection title="Data Structures" items={dataStructures} />
-      <SidebarSection title="Sorting" items={sortingAlgorithms} />
-      <SidebarSection title="Searching" items={searchingAlgorithms} />
-      <SidebarSection title="Graph Algorithms" items={graphAlgorithms} />
-    </aside>
+    <>
+      {/* Hamburger button - mobile only */}
+      <button
+        onClick={() => setIsOpen(true)}
+        className="md:hidden fixed top-3 left-3 z-30 w-9 h-9 flex items-center justify-center rounded-md border border-zinc-200 bg-white shadow-sm"
+        aria-label="Open menu"
+      >
+        <i className="ti ti-menu-2 text-lg"></i>
+      </button>
+
+      {/* Dark overlay - mobile only, shown when menu is open */}
+      {isOpen && (
+        <div
+          onClick={close}
+          className="md:hidden fixed inset-0 bg-black/40 z-20"
+        />
+      )}
+
+      {/* Sidebar itself */}
+      <aside
+        className={`
+          fixed md:static top-0 left-0 h-full md:h-auto z-30
+          w-64 md:w-56 border-r border-zinc-200 bg-zinc-50 p-3 overflow-y-auto shrink-0
+          transform transition-transform duration-200
+          ${isOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0
+        `}
+      >
+        <button
+          onClick={close}
+          className="md:hidden mb-3 w-8 h-8 flex items-center justify-center rounded hover:bg-zinc-200"
+          aria-label="Close menu"
+        >
+          <i className="ti ti-x text-lg"></i>
+        </button>
+
+        <SidebarSection title="Data Structures" items={dataStructures} onLinkClick={close} />
+        <SidebarSection title="Sorting" items={sortingAlgorithms} onLinkClick={close} />
+        <SidebarSection title="Searching" items={searchingAlgorithms} onLinkClick={close} />
+        <SidebarSection title="Graph Algorithms" items={graphAlgorithms} onLinkClick={close} />
+      </aside>
+    </>
   );
 }
